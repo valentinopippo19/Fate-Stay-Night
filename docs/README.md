@@ -819,6 +819,7 @@ La imagen final utilizada por el panel puede almacenarse localmente con el nombr
 ```text
 Rin Tohsaka.jpg
 ```
+<img width="735" height="490" alt="waifu" src="https://github.com/user-attachments/assets/af12e14e-279d-4165-aa6b-48d4aa275aeb" />
 
 ---
 
