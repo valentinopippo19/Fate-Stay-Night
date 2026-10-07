@@ -1,0 +1,11 @@
+@startuml
+rectangle "Datos.java\nArreglos paralelos" as D
+rectangle "Algoritmos.java" as A
+rectangle "WebServer.java" as W
+rectangle "DesktopApp.java" as U
+D --> A
+A --> W
+A --> U
+W --> "Panel Web"
+U --> "Interfaz Swing"
+@enduml

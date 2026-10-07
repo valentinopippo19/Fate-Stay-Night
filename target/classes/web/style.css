@@ -1,0 +1,48 @@
+:root{--bg:#080711;--panel:#131020;--panel2:#1b162b;--text:#f7f1fb;--muted:#a9a0b6;--accent:#b85cff;--accent2:#68d7ff;--line:#302742;--danger:#ff5f81}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 70% 0,#24133b 0,#080711 38%);color:var(--text);font-family:Inter,system-ui,Segoe UI,sans-serif}header{display:flex;justify-content:space-between;align-items:center;padding:30px 5vw;border-bottom:1px solid var(--line)}h1{font-size:clamp(30px,5vw,64px);margin:8px 0;letter-spacing:-2px}h1 b{color:var(--accent)}h2{font-size:38px;margin:8px 0 12px}p{color:var(--muted);line-height:1.65}.eyebrow,.tag{color:var(--accent2);font-size:12px;font-weight:800;letter-spacing:2px}nav{display:flex;gap:8px;padding:12px 5vw;position:sticky;top:0;background:#080711dd;backdrop-filter:blur(14px);z-index:5;border-bottom:1px solid var(--line)}button,select,input{border:1px solid var(--line);background:var(--panel2);color:var(--text);padding:12px 16px;border-radius:10px;font-weight:700}button{cursor:pointer}button:hover{border-color:var(--accent);transform:translateY(-1px)}.danger{border-color:#703042;color:#ff91a6}.page{display:none;max-width:1400px;margin:auto;padding:40px 5vw}.page.active{display:block}.hero{display:grid;grid-template-columns:1.5fr .5fr;gap:24px;align-items:stretch}.hero>div,.heroCard,.card,.algoGrid article,.fighter,.battle,#algoOutput{background:linear-gradient(145deg,#181327,#0f0d18);border:1px solid var(--line);border-radius:20px;padding:28px}.heroCard{display:grid;place-content:center;text-align:center}.big{font-size:54px;color:var(--accent);font-weight:900;margin-top:10px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;margin-top:25px}.card{padding:0;overflow:hidden}.portrait{height:300px;width:100%;object-fit:cover;background:#20182d}.cardBody{padding:18px}.meta{display:flex;justify-content:space-between;color:var(--muted);font-size:13px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}.stat{padding:10px;background:#0c0a12;border-radius:10px}.stat b{display:block;color:var(--accent2)}.sectionHead{display:flex;justify-content:space-between;align-items:end;gap:20px}.sectionHead input{width:min(420px,100%)}.combatGrid{display:grid;grid-template-columns:1fr 80px 1fr;gap:20px;align-items:center}.fighter select{width:100%;margin:10px 0}.vs{text-align:center;font-size:34px;font-weight:900;color:var(--accent)}.fighter img{width:100%;height:320px;object-fit:cover;border-radius:14px}.fight{display:block;margin:25px auto;font-size:18px;padding:16px 28px;background:linear-gradient(90deg,#7e38b9,#b85cff)}.battle{white-space:pre-wrap;font-family:ui-monospace,monospace;min-height:150px}.algoGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.algoGrid article{cursor:pointer}.algoGrid article h3{margin-top:0}.algoGrid strong{color:var(--accent2)}#algoOutput{white-space:pre-wrap;min-height:280px;margin-top:20px;font-family:ui-monospace,monospace;overflow:auto}.videoOverlay{position:fixed;inset:0;background:#000;z-index:100;display:grid;place-items:center}.videoOverlay video{width:100%;height:100%;object-fit:cover}.videoOverlay button{position:absolute;bottom:35px;right:35px;background:#171020dd;border-color:var(--accent)}.hidden{display:none}footer{text-align:center;color:#777085;padding:30px;border-top:1px solid var(--line)}@media(max-width:850px){.hero,.combatGrid{grid-template-columns:1fr}.vs{padding:0}.algoGrid{grid-template-columns:1fr 1fr}header{align-items:start}.sectionHead{align-items:stretch;flex-direction:column}}@media(max-width:550px){.algoGrid{grid-template-columns:1fr}h2{font-size:30px}}
+
+
+/* V4 - video overlay and local media presentation */
+.videoOverlay{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:grid;
+  place-items:center;
+  background:#05050a;
+  padding:20px;
+}
+.videoOverlay.hidden{display:none}
+.videoBox{
+  width:min(1100px,96vw);
+  max-height:94vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+}
+.videoBox video{
+  width:100%;
+  max-height:78vh;
+  display:block;
+  background:#000;
+  border-radius:12px;
+  box-shadow:0 20px 70px rgba(0,0,0,.6);
+}
+.videoActions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.videoActions button{min-width:190px}
+.videoActions .secondary{opacity:.9}
+.videoHint{margin:0;text-align:center;opacity:.75;font-size:.9rem}
+.card .portrait{
+  width:100%;
+  height:360px;
+  object-fit:cover;
+  display:block;
+  background:#111;
+}
+.fighter img{
+  width:100%;
+  max-height:320px;
+  object-fit:cover;
+  border-radius:10px;
+  background:#111;
+}

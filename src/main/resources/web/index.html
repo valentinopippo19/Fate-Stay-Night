@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fate / Algorithm Arena</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div id="opening" class="videoOverlay">
+  <div class="videoBox">
+    <video id="openingVideo" autoplay playsinline controls preload="auto">
+      <source src="/videos/opening.mp4" type="video/mp4">
+      Tu navegador no soporta video HTML5.
+    </video>
+    <div class="videoActions">
+      <button id="openingEnter" onclick="closeOpening()">ENTRAR AL ARENA</button>
+      <button class="secondary" onclick="skipOpening()">SALTAR OPENING</button>
+    </div>
+    <p class="videoHint">El audio se activa al entrar/saltar si el navegador bloquea el autoplay con sonido.</p>
+  </div>
+</div>
+
+<div id="ending" class="videoOverlay hidden">
+  <div class="videoBox">
+    <video id="endingVideo" playsinline controls preload="auto">
+      <source src="/videos/ending.mp4" type="video/mp4">
+      Tu navegador no soporta video HTML5.
+    </video>
+    <div class="videoActions">
+      <button onclick="volver()">VOLVER</button>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div>
+    <span class="eyebrow">HOLY GRAIL WAR // ALGORITHM LAB</span>
+    <h1>FATE/STAY NIGHT <b>ALGORITHM ARENA</b></h1>
+    <p>Waifus, combate y algoritmos: todo en un único panel web.</p>
+  </div>
+  <button class="danger" onclick="salir()">SALIR</button>
+</header>
+
+<nav>
+  <button data-page="home">Arena</button>
+  <button data-page="history">Historial</button>
+  <button data-page="combat">Combate</button>
+  <button data-page="algos">Algoritmos</button>
+</nav>
+
+<main>
+<section id="home" class="page active">
+  <div class="hero">
+    <div>
+      <span class="tag">FATE DATABASE</span>
+      <h2>Elegí a tu Servant y prepará la Guerra del Santo Grial.</h2>
+      <p>Explorá historias, estadísticas e imágenes. Después formá equipos con algoritmos clásicos o lanzá un combate.</p>
+      <button onclick="show('history')">VER SERVANTS</button>
+    </div>
+    <div class="heroCard"><div class="big">10</div><span>Servants femeninas</span><div class="big">6</div><span>familias de algoritmos</span></div>
+  </div>
+  <div id="featured" class="grid"></div>
+</section>
+
+<section id="history" class="page">
+  <div class="sectionHead">
+    <div><span class="tag">CHARACTER ARCHIVE</span><h2>Historial de Servants</h2></div>
+    <input id="search" placeholder="Buscar personaje, clase o Master...">
+  </div>
+  <div id="cards" class="grid"></div>
+</section>
+
+<section id="combat" class="page">
+  <div class="sectionHead"><div><span class="tag">HOLY GRAIL WAR</span><h2>Panel de combate</h2></div></div>
+  <div class="combatGrid">
+    <div class="fighter"><label>SERVANT A</label><select id="fighterA"></select><div id="previewA"></div></div>
+    <div class="vs">VS</div>
+    <div class="fighter"><label>SERVANT B</label><select id="fighterB"></select><div id="previewB"></div></div>
+  </div>
+  <button class="fight" onclick="fight()">⚔ INICIAR COMBATE</button>
+  <div id="battleResult" class="battle"></div>
+</section>
+
+<section id="algos" class="page">
+  <div class="sectionHead"><div><span class="tag">ALGORITHM LAB</span><h2>Laboratorio de algoritmos</h2></div></div>
+  <div class="algoGrid">
+    <article onclick="runAlgo('merge')"><h3>01 · Divide y conquista</h3><p>Merge Sort para ranking de poder.</p><strong>O(n log n)</strong></article>
+    <article onclick="runAlgo('greedy')"><h3>02 · Voraz</h3><p>Selecciona Servants por eficiencia.</p><strong>O(n log n)</strong></article>
+    <article onclick="runAlgo('dp')"><h3>03 · Dinámica</h3><p>Mochila 0/1 para máximo poder.</p><strong>O(n·P)</strong></article>
+    <article onclick="runAlgo('back')"><h3>04 · Backtracking</h3><p>Construye equipos bajo restricciones.</p><strong>Exponencial</strong></article>
+    <article onclick="runAlgo('graph')"><h3>05 · Grafos</h3><p>BFS + Dijkstra sobre afinidades.</p><strong>O(V²) / O(V+E)</strong></article>
+    <article onclick="runAlgo('huffman')"><h3>06 · Huffman</h3><p>Comprime una historia del archivo.</p><strong>O(n log n)</strong></article>
+  </div>
+  <pre id="algoOutput"></pre>
+</section>
+</main>
+
+<footer>FATE / ALGORITHM ARENA · Proyecto académico · Algoritmos sin modelos de dominio POO</footer>
+<script src="/app.js"></script>
+</body>
+</html>

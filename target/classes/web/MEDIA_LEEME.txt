@@ -1,0 +1,20 @@
+MEDIA DEL PANEL WEB - V4
+
+IMAGENES:
+Las 10 imágenes de Servants están dentro de esta misma carpeta y ahora la API
+las referencia con rutas locales (/Saber Artoria.jpg, etc.). No dependen de
+Wikimedia ni de Internet.
+
+VIDEOS:
+videos/opening.mp4
+videos/ending.mp4
+
+COMPORTAMIENTO:
+- El opening aparece al iniciar.
+- Se intenta reproducir con volumen.
+- Si el navegador bloquea autoplay con sonido, ENTRAR AL ARENA lo reproduce
+  con volumen mediante una interacción del usuario.
+- SALTAR OPENING detiene el video y el audio y vuelve al panel.
+- SALIR detiene el opening y muestra el ending con volumen.
+- VOLVER detiene el ending, pone su posición en 0 y recién después recarga
+  la página, evitando que quede audio sonando.
