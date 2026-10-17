@@ -1,0 +1,16 @@
+FATE ALGORITHM WAR — EJECUCIÓN PORTABLE
+
+Windows:
+1. Descomprimí todo el ZIP.
+2. Hacé doble clic en EJECUTAR.bat.
+3. No necesitás instalar Java: el lanzador usa Java 21+ si ya existe y, si no, descarga un JRE 21 automáticamente.
+4. El navegador se abre en http://localhost:8080 o en el siguiente puerto libre si 8080 está ocupado.
+
+Visual Studio Code / IntelliJ / Eclipse:
+- Para presentar/ejecutar: usá EJECUTAR.bat.
+- El panel web está empaquetado dentro de dist/fate-algorithm-war.jar.
+- El proyecto fuente sigue disponible en src/main/java y src/main/resources.
+
+Importante:
+- La primera ejecución sin Java requiere conexión a Internet para descargar el JRE.
+- Para compilar desde código fuente se necesita JDK 21.

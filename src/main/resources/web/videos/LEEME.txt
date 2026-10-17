@@ -1,0 +1,6 @@
+Colocá tus videos con estos nombres para activar la experiencia audiovisual:
+opening.mp4
+ending.mp4
+
+No se incluyen videos oficiales por derechos de autor. El panel funciona sin ellos.
+Las imágenes de personajes se cargan desde URLs configuradas en Datos.java y pueden reemplazarse por archivos locales en una entrega académica.

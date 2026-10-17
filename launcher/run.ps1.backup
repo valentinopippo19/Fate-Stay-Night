@@ -1,0 +1,66 @@
+
+$ErrorActionPreference = 'Stop'
+Set-Location (Split-Path -Parent $PSScriptRoot)
+
+$jar = Join-Path $PSScriptRoot '..\dist\fate-algorithm-war.jar'
+$jar = [IO.Path]::GetFullPath($jar)
+
+$runtime = Join-Path $PSScriptRoot '..\runtime'
+$runtime = [IO.Path]::GetFullPath($runtime)
+
+function Find-Java($root) {
+    if (Test-Path (Join-Path $root 'bin\java.exe')) {
+        return (Join-Path $root 'bin\java.exe')
+    }
+
+    if (Test-Path $root) {
+        $candidate = Get-ChildItem -Path $root -Filter java.exe -Recurse -ErrorAction SilentlyContinue |
+            Select-Object -First 1
+
+        if ($candidate) {
+            return $candidate.FullName
+        }
+    }
+
+    return $null
+}
+
+function Java-Major($javaPath) {
+    try {
+        $line = (& $javaPath -version 2>&1 | Select-Object -First 1).ToString()
+        if ($line -match 'version "([0-9]+)') {
+            return [int]$Matches[1]
+        }
+        return 0
+    } catch {
+        return 0
+    }
+}
+
+# Primero busca Java portable dentro de runtime.
+$java = Find-Java $runtime
+
+# Si no existe, intenta usar Java instalado en Windows.
+if (-not $java -and (Get-Command java.exe -ErrorAction SilentlyContinue)) {
+    $java = (Get-Command java.exe).Source
+}
+
+# No descarga ni instala nada.
+if (-not $java) {
+    throw 'No se encontró Java. Colocá un JRE 21+ portable en runtime o instalá Java 21+.'
+}
+
+if ((Java-Major $java) -lt 21) {
+    throw 'Se requiere Java 21 o superior. No se descargará nada automáticamente.'
+}
+
+if (-not (Test-Path $jar)) {
+    throw "No se encontró el archivo: $jar"
+}
+
+Write-Host 'Iniciando FATE Algorithm War...' -ForegroundColor Cyan
+& $java -jar $jar
+
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
+}

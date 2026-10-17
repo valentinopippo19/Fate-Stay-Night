@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FATE // Algorithm War</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <!-- PANTALLA DE ENTRADA -->
+  
+  <div id="openingScreen" class="warVideoScreen">
+    <video
+      id="openingVideo"
+      class="warVideo"
+      autoplay
+      muted
+      playsinline
+      preload="auto"
+    >
+      <source src="/videos/opening.mp4" type="video/mp4">
+    </video>
+
+    <div class="warVideoShade"></div>
+
+    <div class="warVideoContent">
+      <span class="eyebrow">FATE / STAY NIGHT · ALGORITHM WAR</span>
+      <h1>HOLY GRAIL <b>WAR</b></h1>
+      <p>La guerra está por comenzar.</p>
+
+      <button
+        id="activateAudio"
+        class="warEnter"
+        onclick="activateOpeningAudio()"
+      >
+        🔊 ACTIVAR AUDIO
+      </button>
+
+      <button class="warEnter" onclick="enterWar()">
+        ⚔ ENTRAR A LA GUERRA
+      </button>
+    </div>
+  </div>
+
+
+  <!-- PANTALLA DE SALIDA -->
+
+  <div id="endingScreen" class="warVideoScreen hidden">
+    <video
+      id="endingVideo"
+      class="warVideo"
+      muted
+      playsinline
+      preload="auto"
+    >
+      <source src="/videos/ending.mp4" type="video/mp4">
+    </video>
+
+    <div class="warVideoShade"></div>
+
+    <div class="warVideoContent endingContent">
+      <span class="eyebrow">HOLY GRAIL SYSTEM · FINALIZED</span>
+      <h1>LA GUERRA <b>TERMINÓ</b></h1>
+      <p>El resultado de la Guerra del Santo Grial ha sido registrado.</p>
+
+      <button class="warEnter" onclick="returnToWar()">
+        ↩ VOLVER A LA GUERRA
+      </button>
+    </div>
+  </div>
+
+  <!-- HISTORIA DEL SERVANT -->
+  <div id="storyModal" class="modal hidden">
+    <div class="storyPanel">
+      <button class="close" onclick="closeStory()">✕</button>
+
+      <div class="storyGrid">
+        <div>
+          <img id="storyImage" class="storyImage" alt="Imagen del Servant">
+        </div>
+
+        <div>
+          <span id="storyClass" class="tag"></span>
+          <h2 id="storyName"></h2>
+          <p id="storyIdentity" class="muted"></p>
+          <div id="storyStats" class="statRow"></div>
+
+          <h3>Historia</h3>
+          <p id="storyText"></p>
+
+          <h3>Arma / Noble Phantasm</h3>
+          <p id="storyWeapon"></p>
+
+          <h3>Habilidades</h3>
+          <p id="storySkills"></p>
+        </div>
+      </div>
+
+      <div class="videoStory">
+        <div class="videoHead">
+          <div>
+            <span class="tag">CHARACTER MEMORY</span>
+            <h3>Historia audiovisual</h3>
+            <p class="muted">
+              Video de YouTube integrado directamente en la ficha.
+            </p>
+          </div>
+        </div>
+
+        <div class="youtubeFrame">
+          <iframe
+            id="storyVideo"
+            title="Historia audiovisual"
+            src=""
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+        <div class="videoActions">
+          <a
+            id="youtubeLink"
+            class="tinyLink"
+            target="_blank"
+            rel="noopener"
+          >VER EN YOUTUBE ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ENCABEZADO -->
+  <header class="top">
+    <div>
+      <span class="eyebrow">FATE / STAY NIGHT · ALGORITHM WAR</span>
+      <h1>HOLY GRAIL <b>ARENA</b></h1>
+      <p>
+        Una interfaz web académica para aplicar las estrategias de
+        Programación III a un sistema de combate.
+      </p>
+    </div>
+
+    <div class="topStats">
+      <div>
+        <b id="servantCount">10</b>
+        <small>SERVANTS</small>
+      </div>
+
+      <div>
+        <b>14</b>
+        <small>TÉCNICAS</small>
+      </div>
+
+      <span class="statusPill">WEB APP · JAVA 21</span>
+    </div>
+  </header>
+
+  <!-- NAVEGACIÓN -->
+  <nav>
+    <button data-page="home">ARENA</button>
+    <button data-page="history">SERVANTS</button>
+    <button data-page="combat">COMBATE</button>
+    <button data-page="algos">LABORATORIO</button>
+    <button data-page="complexity">COMPLEJIDAD</button>
+    <button class="exitWar" onclick="exitWar()">⏻ SALIR</button>
+  </nav>
+
+  <main>
+
+    <!-- ARENA PRINCIPAL -->
+    <section id="home" class="page active">
+      <div class="hero">
+        <div class="heroMain">
+          <span class="tag">INTEGRADOR · PROGRAMACIÓN III</span>
+
+          <h2>
+            La Guerra del Santo Grial convertida en un laboratorio algorítmico.
+          </h2>
+
+          <p>
+            Elegí Servants, estudiá sus historias, configurá una batalla
+            por turnos y observá cómo búsqueda, optimización, grafos y
+            programación dinámica resuelven problemas del universo Fate.
+          </p>
+
+          <div class="actions">
+            <button onclick="show('combat')">⚔ INICIAR COMBATE</button>
+            <button class="ghost" onclick="show('algos')">
+              ABRIR LABORATORIO
+            </button>
+          </div>
+        </div>
+
+        <div class="warCard">
+          <span>WAR STATUS</span>
+          <strong>ACTIVE</strong>
+
+          <div class="meter">
+            <i style="width: 92%"></i>
+          </div>
+
+          <small>Holy Grail synchronization: 92%</small>
+
+          <div class="miniStats">
+            <div>
+              <b>6</b>
+              <span>ESTRATEGIAS</span>
+            </div>
+
+            <div>
+              <b>8</b>
+              <span>UNIDADES</span>
+            </div>
+
+            <div>
+              <b>∞</b>
+              <span>COMBOS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sectionHead">
+        <div>
+          <span class="tag">FEATURED SERVANTS</span>
+          <h2>Elegí una historia</h2>
+        </div>
+      </div>
+
+      <div id="featured" class="grid"></div>
+    </section>
+
+    <!-- ARCHIVO DE SERVANTS -->
+    <section id="history" class="page">
+      <div class="sectionHead">
+        <div>
+          <span class="tag">CHARACTER ARCHIVE</span>
+          <h2>Servants &amp; Lore</h2>
+        </div>
+
+        <input
+          id="search"
+          type="search"
+          placeholder="Buscar nombre, clase, Master, arma..."
+        >
+      </div>
+
+      <div id="cards" class="grid"></div>
+    </section>
+
+    <!-- COMBATE -->
+    <section id="combat" class="page">
+      <div class="sectionHead">
+        <div>
+          <span class="tag">TACTICAL SYSTEM</span>
+          <h2>Combate interactivo</h2>
+          <p class="muted">
+            La IA rival decide con una evaluación tipo Minimax + alfa-beta.
+          </p>
+        </div>
+      </div>
+
+      <div class="combatSetup">
+        <div>
+          <label for="fighterA">SERVANT A — PLAYER</label>
+          <select id="fighterA"></select>
+          <div id="previewA"></div>
+        </div>
+
+        <div class="vs">VS</div>
+
+        <div>
+          <label for="fighterB">SERVANT B — AI</label>
+          <select id="fighterB"></select>
+          <div id="previewB"></div>
+        </div>
+      </div>
+
+      <div class="console">
+        <div class="battleArena">
+          <div class="fighterHUD" id="hudA"></div>
+          <div class="fighterHUD" id="hudB"></div>
+        </div>
+
+        <div class="battleButtons">
+          <button onclick="combatAction('attack')">⚔ ATAQUE</button>
+          <button onclick="combatAction('special')">✦ NOBLE PHANTASM</button>
+          <button onclick="combatAction('defend')">🛡 DEFENDER</button>
+          <button class="ghost" onclick="startCombat()">↻ NUEVO COMBATE</button>
+        </div>
+
+        <pre id="battleLog">Seleccioná dos Servants y presioná NUEVO COMBATE.</pre>
+      </div>
+    </section>
+
+    <!-- LABORATORIO -->
+    <section id="algos" class="page">
+      <div class="sectionHead">
+        <div>
+          <span class="tag">ALGORITHM LAB</span>
+          <h2>Laboratorio de Programación III</h2>
+          <p class="muted">
+            Cada botón ejecuta el algoritmo en Java y devuelve su traza al navegador.
+          </p>
+        </div>
+      </div>
+
+      <div class="filterRow">
+        <select id="algoStart" aria-label="Servant inicial"></select>
+
+        <input
+          id="budget"
+          type="number"
+          value="25"
+          min="1"
+          max="60"
+          title="Presupuesto"
+          aria-label="Presupuesto"
+        >
+
+        <select id="algoType" aria-label="Algoritmo">
+          <option value="merge">MergeSort</option>
+          <option value="quick">QuickSort</option>
+          <option value="greedy">Greedy</option>
+          <option value="dp">Programación dinámica</option>
+          <option value="backtracking">Backtracking + 8 reinas</option>
+          <option value="bfs">BFS</option>
+          <option value="dfs">DFS</option>
+          <option value="dijkstra">Dijkstra</option>
+          <option value="floyd">Floyd</option>
+          <option value="prim">Prim</option>
+          <option value="kruskal">Kruskal</option>
+          <option value="cycle">Detección de ciclos</option>
+          <option value="huffman">Huffman</option>
+          <option value="minimax">Minimax + alfa-beta</option>
+          <option value="branch">Branch &amp; Bound</option>
+          <option value="combo">DP de combos</option>
+        </select>
+
+        <button onclick="runSelectedAlgo()">EJECUTAR</button>
+      </div>
+
+      <div class="algoCards">
+        <article>
+          <b>01</b>
+          <h3>Divide &amp; Conquista</h3>
+          <p>MergeSort / QuickSort para rankings.</p>
+        </article>
+
+        <article>
+          <b>02</b>
+          <h3>Greedy</h3>
+          <p>Selección por ratio poder/costo.</p>
+        </article>
+
+        <article>
+          <b>03</b>
+          <h3>Programación dinámica</h3>
+          <p>Mochila 0/1 y optimización de combos.</p>
+        </article>
+
+        <article>
+          <b>04</b>
+          <h3>Backtracking</h3>
+          <p>Equipos válidos y ocho reinas.</p>
+        </article>
+
+        <article>
+          <b>05</b>
+          <h3>Grafos</h3>
+          <p>BFS, DFS, Dijkstra, Floyd, Prim, Kruskal y ciclos.</p>
+        </article>
+
+        <article>
+          <b>06</b>
+          <h3>Juegos / Poda</h3>
+          <p>Minimax, alfa-beta y Branch &amp; Bound.</p>
+        </article>
+      </div>
+
+      <div id="algoVisual" class="algoVisual">
+        <div class="emptyVisual">
+          <span>◎</span>
+          <h3>Laboratorio listo</h3>
+          <p>
+            Elegí una estrategia y ejecutala para visualizar su recorrido,
+            decisiones, estructuras y resultados.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPLEJIDAD -->
+    <section id="complexity" class="page">
+      <div class="sectionHead">
+        <div>
+          <span class="tag">ANALYSIS</span>
+          <h2>Complejidad temporal y espacial</h2>
+          <p class="muted">
+            Panel de análisis para justificar la elección de cada estrategia.
+          </p>
+        </div>
+      </div>
+
+      <div id="complexityTable"></div>
+    </section>
+
+  </main>
+
+  <footer>
+    FATE / ALGORITHM WAR · Trabajo Integrador · Java 21 + HttpServer
+    + HTML/CSS/JS · Algoritmos ejecutados en backend
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>

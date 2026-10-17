@@ -1,0 +1,13 @@
+VIDEOS POR PERSONAJE
+====================
+La ficha de cada Servant busca un MP4 con la ruta indicada en Datos.java:
+  /videos/characters/saber.mp4
+  /videos/characters/sakura.mp4
+  /videos/characters/rider.mp4
+  etc.
+
+Podés copiar cualquier video propio/licenciado con ese nombre y reiniciar el servidor.
+También podés usar el botón CARGAR VIDEO LOCAL dentro de la ficha para previsualizar
+un archivo directamente desde tu PC sin subirlo al servidor.
+
+Rin Tohsaka ya incluye un video de referencia en /videos/rin-tohsaka.mp4.
