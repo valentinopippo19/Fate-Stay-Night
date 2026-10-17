@@ -969,6 +969,12 @@ Si se reemplaza el archivo, debe conservarse el nombre esperado por el código o
 
 ---
 
+# 13.4 Arturia Pendragon
+
+https://github.com/user-attachments/assets/52f86456-5546-4a48-8a1a-d8ccec5d1d0f
+
+<img width="735" height="517" alt="fate grend orter" src="https://github.com/user-attachments/assets/2ca3d26b-1922-4d44-8128-a1f4e2243101" />
+
 # 14. Preparación de la entrega académica
 
 Antes de generar el ZIP final, verificá que incluya:
