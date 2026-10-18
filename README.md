@@ -983,29 +983,7 @@ https://vww.animeflv.one/ver/fate-stay-night-1
 
 https://mws3a.com/encyclopedia-of-weight-loss/
 
-# 14. Preparación de la entrega académica
-
-Antes de generar el ZIP final, verificá que incluya:
-
-- [ ] Código fuente Java.
-- [ ] Archivo `pom.xml`.
-- [ ] README actualizado.
-- [ ] Frontend web: `index.html`, `style.css` y `app.js`.
-- [ ] Recursos de imágenes.
-- [ ] Videos o instrucciones claras para agregarlos.
-- [ ] Implementaciones algorítmicas.
-- [ ] Documentación técnica y análisis de complejidad.
-- [ ] Casos de prueba y resultados comprobables.
-- [ ] Diagramas UML, si forman parte de la consigna.
-- [ ] Instrucciones de ejecución.
-- [ ] Archivos adicionales requeridos por la materia.
-- [ ] Verificación de que los recursos multimedia se pueden utilizar legalmente.
-
-No incluyas afirmaciones de pruebas exitosas, funcionalidades o archivos que no estén presentes en la versión entregada. Si un recurso multimedia no puede redistribuirse por su tamaño o licencia, indicá cómo obtenerlo legalmente o cómo reemplazarlo.
-
----
-
-# 15. Resumen del proyecto
+# 14. Resumen del proyecto
 
 **FATE / Algorithm War 5.0** integra:
 
